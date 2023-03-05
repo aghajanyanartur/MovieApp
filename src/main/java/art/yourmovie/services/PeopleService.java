@@ -26,6 +26,14 @@ public class PeopleService {
         return peopleRepository.findById(id);
     }
 
+    public Optional<Person> findUserByUsername(String username){
+        return peopleRepository.findByUsername(username);
+    }
+
+    public Optional<Person> findUserByPassword(String password){
+        return peopleRepository.findByPassword(password);
+    }
+
     public Person updateUser(String name, String password){
         return peopleRepository.save(new Person(name, password));
     }

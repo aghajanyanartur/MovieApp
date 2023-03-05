@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
@@ -16,6 +16,7 @@
         <br><br>
         <input type="submit" value="Sign Up">
     </form>
+    <p th:text="${errorMessage}" style="color:red"></p>
 </div>
 </body>
 </html>
