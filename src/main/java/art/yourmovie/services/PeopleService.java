@@ -18,7 +18,7 @@ public class PeopleService {
         return peopleRepository.save(new Person(name, password));
     }
 
-    public List<Person> findAllUsers(Long id){
+    public List<Person> findAllUsers(){
         return peopleRepository.findAll();
     }
 
@@ -34,11 +34,20 @@ public class PeopleService {
         return peopleRepository.findByPassword(password);
     }
 
-    public Person updateUser(String name, String password){
-        return peopleRepository.save(new Person(name, password));
+    public void updateUser(Person person, String name, String password){
+        if(peopleRepository.findById(person.getId()).isPresent()){
+            person = peopleRepository.findById(person.getId()).get();
+            person.setUsername(name);
+            person.setPassword(password);
+            peopleRepository.save(person);
+        }
     }
 
     public void deleteUser(Long id) {
         peopleRepository.deleteById(id);
+    }
+
+    public void deleteAll(){
+        peopleRepository.deleteAll();
     }
 }
